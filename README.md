@@ -1,12 +1,67 @@
-# React + Vite
+# 📚 Book Review Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack MERN application where users can browse books, view detailed information, write and read reviews, and rate books.  
+Built for the Full Stack Developer Assignment using **MongoDB, Express, React, Node.js**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+### Frontend:
+- React.js + Vite
+- React Router
+- React Context API (for state management)
+- Axios (API calls)
+- Tailwind CSS (styling)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Backend:
+- Node.js
+- Express.js
+- MongoDB + Mongoose
+
+
+## 📄 Features
+
+### ✅ Core Features
+- 🏠 Home Page with featured books
+- 🔍 Book Listing Page with search and filter
+- 📖 Individual Book Page with details, reviews, and average ratings
+- 🧑‍💼 User Profile Page
+- ✍️ Review Submission Form with star rating
+
+### ⚙️ Backend API Routes
+| Route | Method | Description |
+|-------|--------|-------------|
+| `/books` | GET | Get all books (supports pagination) |
+| `/books/:id` | GET | Get individual book details |
+| `/books` | POST | Add a new book (admin only) |
+| `/reviews?bookId=xxx` | GET | Get reviews for a specific book |
+| `/reviews` | POST | Submit a new review |
+| `/users/:id` | GET | Get user profile |
+| `/users/:id` | PUT | Update user profile |
+
+### 💬 Bonus Feature
+- ✨ AI-Powered Review Refinement using GPT (grammar fix + tone polish)
+
+---
+
+## 🧑‍💻 Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/book-review-platform.git
+cd book-review-platform
+
+cd backend
+npm install
+
+PORT=3000
+MONGO_URI=your_mongodb_connection_string
+
+node server.js
+
+cd frontend
+npm install
+
+VITE_BACKEND_URL=http://localhost:3000
