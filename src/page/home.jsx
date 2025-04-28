@@ -5,43 +5,81 @@ import axios from "axios";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
-  const BASEURL = import.meta.env.VITE_BACKEND_URL
+  const [fetchError, setFetchError] = useState(false); // NEW
+  const BASEURL = import.meta.env.VITE_BACKEND_URL;
 
-  const dummyBooks = [
+
+  // this is dummy books this will display if there are no books stored in db or facing some error while fetching books
+  const dummyCrimeBooks = [
     {
       _id: "dummy1",
       title: "The Phantom Mystery",
-      author: "V.S. Ramachandran Sandra BlakesleeOliver Sacks",
-      coverImage: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1409601908i/31555.jpg",
-      genre: "crime",
-    },
-    {
-      _id: "dummy1",
-      title: "The Phantom Mystery",
-      author: "V.S. Ramachandran Sandra BlakesleeOliver Sacks",
-      coverImage: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1409601908i/31555.jpg",
-      genre: "crime",
-    },
-    {
-      _id: "dummy1",
-      title: "The Phantom Mystery",
-      author: "V.S. Ramachandran Sandra BlakesleeOliver Sacks",
-      coverImage: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1409601908i/31555.jpg",
+      author: "V.S. Ramachandran Sandra Blakeslee Oliver Sacks",
+      coverImage:
+        "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1409601908i/31555.jpg",
       genre: "crime",
     },
     {
       _id: "dummy2",
-      title: "Twilight Code",
-      author: "John Smith",
-      coverImage: "https://via.placeholder.com/300x400?text=Dummy+Book",
-      genre: "thriller",
+      title: "Midnight Shadows",
+      author: "Agatha Christie",
+      coverImage: "https://via.placeholder.com/300x400?text=Dummy+Book+2",
+      genre: "crime",
     },
     {
       _id: "dummy3",
       title: "Secrets of Shadows",
       author: "Emily Stone",
-      coverImage: "https://via.placeholder.com/300x400?text=Dummy+Book",
+      coverImage: "https://via.placeholder.com/300x400?text=Dummy+Book+3",
       genre: "crime",
+    },
+  ];
+
+  const dummyFeaturedBooks = [
+    {
+      _id: "dummyf1",
+      title: "Journey to Imagination",
+      author: "Luna Sparks",
+      coverImage: "https://via.placeholder.com/300x400?text=Featured+Book+1",
+      genre: "fiction",
+    },
+    {
+      _id: "dummyf2",
+      title: "Dream Beyond Stars",
+      author: "Leo Night",
+      coverImage: "https://via.placeholder.com/300x400?text=Featured+Book+2",
+      genre: "fiction",
+    },
+    {
+      _id: "dummyf3",
+      title: "Mystic Horizons",
+      author: "Aria Dawn",
+      coverImage: "https://via.placeholder.com/300x400?text=Featured+Book+3",
+      genre: "fiction",
+    },
+  ];
+
+  const dummyThrillerBooks = [
+    {
+      _id: "dummyt1",
+      title: "Edge of Reality",
+      author: "Noah Blaze",
+      coverImage: "https://via.placeholder.com/300x400?text=Thriller+Book+1",
+      genre: "thriller",
+    },
+    {
+      _id: "dummyt2",
+      title: "Pulse of Shadows",
+      author: "Ava Storm",
+      coverImage: "https://via.placeholder.com/300x400?text=Thriller+Book+2",
+      genre: "thriller",
+    },
+    {
+      _id: "dummyt3",
+      title: "Whispers in the Dark",
+      author: "Mason Frost",
+      coverImage: "https://via.placeholder.com/300x400?text=Thriller+Book+3",
+      genre: "thriller",
     },
   ];
 
@@ -50,8 +88,10 @@ const Home = () => {
       try {
         const res = await axios.get(`${BASEURL}/book/getbooks`);
         setBooks(res.data);
+        setFetchError(false);
       } catch (error) {
         console.error("Error fetching books:", error);
+        setFetchError(true); // ERROR DETECTED
       }
     };
     fetchBooks();
@@ -105,31 +145,36 @@ const Home = () => {
           Featured Books
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {featured.map(renderBookCard)}
+          {(featured.length > 0 && !fetchError
+            ? featured
+            : dummyFeaturedBooks
+          ).map(renderBookCard)}
         </div>
       </section>
 
       {/* Crime Books */}
       <section className="py-12 px-6 md:px-16">
-        <h3 className="text-3xl text-center font-bold mb-8 text-gray-800">Crime</h3>
+        <h3 className="text-3xl text-center font-bold mb-8 text-gray-800">
+          Crime
+        </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {crimeBooks.length > 0 ? (
-            crimeBooks.map(renderBookCard)
-          ) : (
-            <p className="text-center col-span-full text-gray-600">No crime books found.</p>
-          )}
+          {(crimeBooks.length > 0 && !fetchError
+            ? crimeBooks
+            : dummyCrimeBooks
+          ).map(renderBookCard)}
         </div>
       </section>
 
       {/* Thriller Books */}
       <section className="py-12 px-6 md:px-16">
-        <h3 className="text-3xl text-center font-bold mb-8 text-gray-800">Thriller</h3>
+        <h3 className="text-3xl text-center font-bold mb-8 text-gray-800">
+          Thriller
+        </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {thrillerBooks.length > 0 ? (
-            thrillerBooks.map(renderBookCard)
-          ) : (
-            <p className="text-center col-span-full text-gray-600">No thriller books found.</p>
-          )}
+          {(thrillerBooks.length > 0 && !fetchError
+            ? thrillerBooks
+            : dummyThrillerBooks
+          ).map(renderBookCard)}
         </div>
       </section>
     </div>

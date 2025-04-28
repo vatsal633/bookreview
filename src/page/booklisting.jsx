@@ -22,7 +22,7 @@ const BookListingPage = () => {
         setBooks(res.data);
         setLoading(false);
       } catch (err) {
-        setError("Failed to fetch books");
+        setError("Failed to fetch books or no books are available in database please add new");
         setLoading(false);
       }
     };
