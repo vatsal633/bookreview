@@ -10,7 +10,8 @@ const ReviewForm = () => {
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const BASEURL = import.meta.env.VITE_BACKEND_URL;
- 
+  
+  
 
   useEffect(() => {
     const fetchBook = async () => {
@@ -33,7 +34,13 @@ const ReviewForm = () => {
 
     try {
       // Sending the review to the backend
-      const user = "Anonymous User";  // Replace this with a real user if needed
+      const username = JSON.parse(localStorage.getItem("token"))
+      let user = ''
+      if(username){
+        user = username.name
+      }else{
+       user = "Anonymous User";  // Replace this with a real user if needed
+      }
       const res = await axios.post(`${BASEURL}/review/${bookname}`, {
         user,
         rating,
