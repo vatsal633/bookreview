@@ -42,21 +42,65 @@ Built for the Full Stack Developer Assignment using **MongoDB, Express, React, N
 
 <h2>🧑‍💻 Installation</h2>
 
-### 1. Clone the Repository
-
-```bash
+<h3>Clone the Repository</h3>
+<pre>
+<code>
 git clone https://github.com/your-username/book-review-platform.git
 cd book-review-platform
+</code>
+</pre>
 
+
+<h3>Install Dependencies</h3>
+<p><b>Backend:</b></p>
+<pre>
+<code>
 cd backend
 npm install
+</code>
+</pre>
 
-PORT=3000
-MONGO_URI=your_mongodb_connection_string
 
-node server.js
 
-cd frontend
+<p><b>Frontend:</b></p>
+<pre>
+<code>
 npm install
+</code>
+</pre>
 
-VITE_BACKEND_URL=http://localhost:3000
+
+
+<h2>Run the Project</h2>
+<p><b>Start Backend Server:</b></p>
+<pre>
+<code>
+cd backend
+npm start
+</code>
+</pre>
+
+
+<p><b>Start Frontend:</b></p>
+<pre>
+<code>
+cd frontend
+npm run dev
+</code>
+</pre>
+
+
+<h2>Deployment</h2>
+<ul>
+    <li><b>Frontend:</b> Hosted on <a href="your-vercel-link">Vercel</a></li>
+    <li><b>Backend:</b> Hosted on <a href="your-render-link">Render</a></li>
+    <li><b>Database:</b> MongoDB Atlas</li>
+    <li><b>Url:</b><a href="https://codequest-phi.vercel.app/">https://codequest-phi.vercel.app/</a></li>
+</ul>
+
+<h2>Contributing</h2>
+<p>Feel free to contribute by opening issues or creating pull requests.</p>
+
+<h2>License</h2>
+<p>This project is licensed under the <b>MIT License</b>.</p>
+
