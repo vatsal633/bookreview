@@ -29,23 +29,18 @@ Built for the Full Stack Developer Assignment using **MongoDB, Express, React, N
 - 🧑‍💼 User Profile Page
 - ✍️ Review Submission Form with star rating
 
-### ⚙️ Backend API Routes
-| Route | Method | Description |
-|-------|--------|-------------|
-| `/books` | GET | Get all books (supports pagination) |
-| `/books/:id` | GET | Get individual book details |
-| `/books` | POST | Add a new book (admin only) |
-| `/reviews?bookId=xxx` | GET | Get reviews for a specific book |
-| `/reviews` | POST | Submit a new review |
-| `/users/:id` | GET | Get user profile |
-| `/users/:id` | PUT | Update user profile |
-
 ### 💬 Bonus Feature
 - ✨ AI-Powered Review Refinement using GPT (grammar fix + tone polish)
 
 ---
 
-## 🧑‍💻 Installation
+<h2>Prerequisites</h2>
+<ul>
+    <li>Install <a href="https://nodejs.org/">Node.js & npm</a></li>
+    <li>Install <a href="https://www.mongodb.com/atlas/database">MongoDB (or use MongoDB Atlas)</a></li>
+</ul>
+
+<h2>🧑‍💻 Installation</h2>
 
 ### 1. Clone the Repository
 
