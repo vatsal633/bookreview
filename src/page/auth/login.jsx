@@ -13,7 +13,7 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+    
     if (!username || !password) {
       setError("Both fields are required.");
       return;
