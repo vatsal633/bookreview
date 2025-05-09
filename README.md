@@ -95,7 +95,7 @@ npm run dev
     <li><b>Frontend:</b> Hosted on <a href="your-vercel-link">Vercel</a></li>
     <li><b>Backend:</b> Hosted on <a href="your-render-link">Render</a></li>
     <li><b>Database:</b> MongoDB Atlas</li>
-    <li><b>Url:</b><a href="https://bookreview-phi.vercel.app/">https://codequest-phi.vercel.app/</a></li>
+    <li><b>Url:</b><a href="https://bookreview-phi.vercel.app/">click here</a></li>
 </ul>
 
 <h2>Contributing</h2>
