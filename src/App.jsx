@@ -12,8 +12,9 @@ import Login from './page/auth/login'
 import Signin from './page/auth/signin'
 import BookListingPage from './page/booklisting'
 import ProtectedRoute from './componets/protectedRoute'
-import Admin from './page/admin'
+import Admin from './page/adminPanal'
 import Reviewform from "./componets/reviewForm"
+import AdminLogin from './page/auth/adminLogin'
 
 
 const router = createBrowserRouter ([
@@ -41,6 +42,11 @@ const router = createBrowserRouter ([
   {
     path:'/:bookname/review',
     element:<><Navbar/><Reviewform/></>
+  },
+
+  {
+    path:"/login/admin",
+    element:<><AdminLogin/></>
   },
 
 

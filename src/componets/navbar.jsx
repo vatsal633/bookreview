@@ -7,15 +7,23 @@ import { GrUserAdmin } from "react-icons/gr";
 
 const navbar = () => {
   const [Token, setToken] = useState(false)
+  const [adminToken, setAdminToken] = useState(false)
   const [username, setUsername] = useState("")
 
 
   useEffect(() => {
     try {
       const storedToken = JSON.parse(localStorage.getItem("token"))
+      const adminToken = JSON.parse(localStorage.getItem("adminToken"))?.token
+
+      console.log(adminToken)
       if (storedToken) {
         setToken(true)
         setUsername(storedToken.name)
+      }
+
+      if (adminToken) {
+        setAdminToken(true)
       }
       else {
         setToken(false)
@@ -45,12 +53,19 @@ const navbar = () => {
                 Browse
               </li>
             </Link>
-            <Link to='/admin'>
+            <Link to='/login/admin'>
               <div className='flex flex-col items-center'>
                 <GrUserAdmin size={20} />
-                <span>Admin</span>
+                <span>Admin login</span>
               </div>
             </Link>
+
+            {adminToken&&(<Link to='/admin'>
+              <div className='flex flex-col items-center'>
+                <span>Admin panal</span>
+              </div>
+            </Link>)}
+            
           </ul>
         </div>
 
@@ -66,11 +81,11 @@ const navbar = () => {
 
         </div>
 
-      {Token&&(<Link to={`/${username}/profile`} className='flex flex-col items-center'>
+        {Token && (<Link to={`/${username}/profile`} className='flex flex-col items-center'>
           <CiUser size={35} className='cursor-pointer' />
           <span className='text-indigo-600 font-bold'>{username}</span>
         </Link>)}
-        
+
       </div>
     </>
   )

@@ -4,6 +4,7 @@ import cors from "cors"
 import authRoutes from "./routes/authRoutes.js"
 import bookRoutes from "./routes/bookRoutes.js"
 import reviewRoute from "./routes/reviewRoute.js"
+import adminRoute from "./routes/adminRoutes.js"
 import connectDb from "./db.js"
 
 
@@ -25,6 +26,7 @@ app.use(cors({
 app.use('/auth/api',authRoutes)
 app.use('/book',bookRoutes)
 app.use('/review',reviewRoute)
+app.use('/api/admin',adminRoute)
 
 app.get('/', (req, res) => {
     res.send("hellow world")
